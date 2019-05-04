@@ -13,7 +13,7 @@
     <string name="add_sign">+</string>
     <string name="subtract_sign">-</string>
     <string name="multiply_sign">*</string>
-    <string name="result_sign">=</string>
+    <string name="result_sign">Next</string>
     <string name="delete_sign">DEL</string>
     <string name="dot">.</string>
 </resources>

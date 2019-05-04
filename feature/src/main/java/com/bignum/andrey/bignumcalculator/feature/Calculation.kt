@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import java.util.*
+import kotlin.math.absoluteValue
 
 class Calculation(text:String, view: TextView) {
     var calculation_text = text
@@ -92,7 +93,49 @@ class Calculation(text:String, view: TextView) {
         return
     }
     fun Subtract() {
-
+        var result = ""
+        var nums = calculation_text.split(" ")
+        var num1 = nums[0]
+        var num2 = nums[1]
+        if (num1.length < num2.length) {
+            result = "-"
+        }
+        var x = representAsList(num1)
+        var y = representAsList(num2)
+        if (x.count() < y.count()) {
+            var c = x
+            x = y
+            y = c
+        }
+        var i = y.count()
+        while ( i > 0){
+            x[x.count()-i] -= y[y.count()-i]
+            i--
+        }
+        x.reverse()
+        for ( i in 0 .. x.count()-2) {
+            if (x[i] < 0) {
+                x[i] += 1000000
+                x[i+1] -= 1
+            }
+        }
+        x.reverse()
+        if (result == "-"){
+            x[0] = x[0].absoluteValue
+        }
+        result += x[0].toString()
+        x.removeAt(0)
+        x.forEach {
+            if (it.toString().length < 6) {
+                for(i in 1..6-it.toString().length){
+                    result += "0"
+                }
+            } else if (it == 0) {
+                result += "00000"
+            }
+            result += it.toString()
+        }
+        ViewText.text = result
         return
     }
 }

@@ -64,7 +64,8 @@ class MainActivity : AppCompatActivity() {
             calc.Addition()
         }
         subtract_button.setOnClickListener {
-            viewDisplay("-")
+            var calc = Calculation(result_text.text.toString(), result_text)
+            calc.Subtract()
         }
         multiply_button.setOnClickListener {
 
