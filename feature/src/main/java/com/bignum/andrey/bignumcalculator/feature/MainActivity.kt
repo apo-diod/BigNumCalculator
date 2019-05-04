@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
+import android.content.pm.ActivityInfo;
+import android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,8 +28,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        requestedOrientation = SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_main)
+
         println("Created!")
         one_button.setOnClickListener {
             viewDisplay("1")
