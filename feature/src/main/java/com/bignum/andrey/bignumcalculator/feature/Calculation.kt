@@ -42,6 +42,9 @@ class Calculation(text:String, view: TextView) {
     fun Addition() {
         var result = ""
         var nums = calculation_text.split(" ")
+        if (nums.count() != 2) {
+            return
+        }
         var num1 = nums[0]
         var num2 = nums[1]
         var x = representAsList(num1)
@@ -95,6 +98,9 @@ class Calculation(text:String, view: TextView) {
     fun Subtract() {
         var result = ""
         var nums = calculation_text.split(" ")
+        if (nums.count() != 2) {
+            return
+        }
         var num1 = nums[0]
         var num2 = nums[1]
         if (num1.length < num2.length) {
