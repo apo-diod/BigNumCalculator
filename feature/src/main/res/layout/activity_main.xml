@@ -83,8 +83,8 @@
     <LinearLayout android:layout_width="match_parent" android:layout_height="80dp">
         <android.support.v7.widget.AppCompatButton android:layout_width="80dp"
                                                    android:layout_height="80dp"
-                                                   android:text="@string/dot"
-                                                   android:id="@+id/dot_button"
+                                                   android:text="@string/fact"
+                                                   android:id="@+id/fact_button"
         />
         <android.support.v7.widget.AppCompatButton android:layout_width="80dp"
                                                    android:layout_height="80dp"

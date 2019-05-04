@@ -11,7 +11,7 @@ class Calculation(text:String, view: TextView) {
     var calculation_text = text
     var ViewText = view
 
-    fun representAsList(num: String):LinkedList<Int> {
+    private fun representAsList(num: String):LinkedList<Int> {
         var resStr = LinkedList<String>()
         var i = 0
         while(i < num.length){
@@ -39,14 +39,8 @@ class Calculation(text:String, view: TextView) {
         return res
     }
 
-    fun Addition() {
+    private fun add(num1:String, num2:String):String{
         var result = ""
-        var nums = calculation_text.split(" ")
-        if (nums.count() != 2) {
-            return
-        }
-        var num1 = nums[0]
-        var num2 = nums[1]
         var x = representAsList(num1)
         var y = representAsList(num2)
         if (x.count() < y.count()) {
@@ -92,17 +86,11 @@ class Calculation(text:String, view: TextView) {
             }
             result += it.toString()
         }
-        ViewText.text = result
-        return
+        return result
     }
-    fun Subtract() {
+
+    private fun subt(num1:String, num2:String):String {
         var result = ""
-        var nums = calculation_text.split(" ")
-        if (nums.count() != 2) {
-            return
-        }
-        var num1 = nums[0]
-        var num2 = nums[1]
         if (num1.length < num2.length) {
             result = "-"
         }
@@ -141,7 +129,63 @@ class Calculation(text:String, view: TextView) {
             }
             result += it.toString()
         }
-        ViewText.text = result
-        return
+        return result
+    }
+
+    fun Addition():String {
+        var nums = calculation_text.split(" ")
+        if (nums.count() != 2) {
+            return ""
+        }
+        var num1 = nums[0]
+        var num2 = nums[1]
+        return add(num1, num2)
+    }
+
+    fun Subtract():String {
+        var nums = calculation_text.split(" ")
+        if (nums.count() != 2) {
+            return ""
+        }
+        var num1 = nums[0]
+        var num2 = nums[1]
+        return subt(num1, num2)
+    }
+
+    fun mult(n1:String, n2:String):String {
+        var num1 = n1
+        var num2 = n2
+        num2 = subt(num2, "1")
+        while (num2 != "0") {
+            num1 = add(num1, n1)
+            num2 = subt(num2, "1")
+        }
+        return num1
+    }
+
+    fun Multiplication():String {
+        var nums = calculation_text.split(" ")
+        if (nums.count() != 2 || nums[1].isBlank() || nums[1].isEmpty()) {
+            return ""
+        }
+        var num1 = nums[0]
+        var num2 = nums[1]
+        return mult(num1, num2)
+    }
+
+    fun Fact():String {
+        var base = calculation_text.toInt()
+        if (calculation_text.isEmpty()|| calculation_text.isBlank()) {
+            return ""
+        }
+        var result = "1"
+        for (i in 1..base) {
+            result = mult(result, i.toString())
+        }
+        return result
+    }
+
+    fun Display(s : String) {
+        ViewText.text = s
     }
 }

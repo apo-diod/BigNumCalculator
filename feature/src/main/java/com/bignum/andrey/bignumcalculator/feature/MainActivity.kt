@@ -64,14 +64,18 @@ class MainActivity : AppCompatActivity() {
         }
         add_button.setOnClickListener {
             var calc = Calculation(result_text.text.toString(), result_text)
-            calc.Addition()
+            var res = calc.Addition()
+            calc.Display(res)
         }
         subtract_button.setOnClickListener {
             var calc = Calculation(result_text.text.toString(), result_text)
-            calc.Subtract()
+            var res = calc.Subtract()
+            calc.Display(res)
         }
         multiply_button.setOnClickListener {
-
+            var calc = Calculation(result_text.text.toString(), result_text)
+            var res = calc.Multiplication()
+            calc.Display(res)
         }
         del_button.setOnLongClickListener {
             while (result_text.text.isNotEmpty())
@@ -83,6 +87,11 @@ class MainActivity : AppCompatActivity() {
         }
         result_button.setOnClickListener {
             viewDisplay(" ")
+        }
+        fact_button.setOnClickListener {
+            var calc = Calculation(result_text.text.toString(), result_text)
+            var res = calc.Fact()
+            calc.Display(res)
         }
     }
 }
