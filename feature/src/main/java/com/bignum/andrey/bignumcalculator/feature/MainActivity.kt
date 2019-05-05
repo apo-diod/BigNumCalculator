@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.widget.AppCompatButton
 
 @SuppressLint("Registered")
-class Dispatcher : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     private var model:Model? = null
     private var vm:ExtendedViewModel? = null
     private var view:View? = null
