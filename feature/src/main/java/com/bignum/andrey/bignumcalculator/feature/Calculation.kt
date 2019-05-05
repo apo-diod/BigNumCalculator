@@ -26,8 +26,8 @@ class Calculation(text:String, view: TextView) {
         var rem = ""
         while (i > 0) {
             if (resStr[i].length < 6) {
-                rem = (resStr[i-1].toInt()%Math.pow(10.0, 6.0-resStr[i].length).toInt()).toString()
-                resStr[i-1] = (resStr[i-1].toInt()/Math.pow(10.0, 6.0-resStr[i].length).toInt()).toString()
+                rem = resStr[i-1].substring(resStr[i].length, 6)
+                resStr[i-1] = resStr[i-1].substring(0, 6-rem.length)
                 resStr[i] = rem+resStr[i]
             }
             i--
@@ -155,9 +155,15 @@ class Calculation(text:String, view: TextView) {
     fun mult(n1:String, n2:String):String {
         var num1 = n1
         var num2 = n2
+        if (n1.length < n2.length) {
+            var c = num1
+            num1 = num2
+            num2 = c
+        }
+        var base = num1
         num2 = subt(num2, "1")
         while (num2 != "0") {
-            num1 = add(num1, n1)
+            num1 = add(num1, base)
             num2 = subt(num2, "1")
         }
         return num1
@@ -174,6 +180,9 @@ class Calculation(text:String, view: TextView) {
     }
 
     fun Fact():String {
+        if(calculation_text.isBlank() || calculation_text.isEmpty()) {
+            return ""
+        }
         var base = calculation_text.toInt()
         if (calculation_text.isEmpty()|| calculation_text.isBlank()) {
             return ""
