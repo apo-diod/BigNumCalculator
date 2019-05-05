@@ -7,9 +7,8 @@ import android.widget.TextView
 import java.util.*
 import kotlin.math.absoluteValue
 
-class Calculation(text:String, view: TextView) {
+class Calculation(text:String) {
     var calculation_text = text
-    var ViewText = view
 
     private fun representAsList(num: String):LinkedList<Int> {
         var resStr = LinkedList<String>()
@@ -194,7 +193,4 @@ class Calculation(text:String, view: TextView) {
         return result
     }
 
-    fun Display(s : String) {
-        ViewText.text = s
-    }
 }

@@ -3,7 +3,7 @@
           package="com.bignum.andrey.bignumcalculator.feature">
 
     <application>
-        <activity android:name=".MainActivity">
+        <activity android:name=".Dispatcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
