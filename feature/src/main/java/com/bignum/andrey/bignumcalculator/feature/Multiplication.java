@@ -34,7 +34,7 @@ public class Multiplication {
         }
 
 
-        String product = new String();
+        StringBuilder product = new StringBuilder();
         // Multiply with current digit of first number
         // and add result to previously stored product
         // at current position.
@@ -46,29 +46,29 @@ public class Multiplication {
             {
                 m[i+1] = m[i+1] + carry;
             }
-            product = digit+product;
+            product.insert(0, digit);
 
         }
 
         // ignore '0's from the right
         while(product.length()>1 && product.charAt(0) == '0')
         {
-            product = product.substring(1);
+            product = new StringBuilder(product.substring(1));
         }
 
         // Check condition if one string is negative
         if(tempnum1.charAt(0) == '-' && tempnum2.charAt(0)!='-')
         {
-            product = new StringBuffer(product).insert(0,'-').toString();
+            product = new StringBuilder(new StringBuffer(product.toString()).insert(0, '-').toString());
         }
         else if(tempnum1.charAt(0) != '-' && tempnum2.charAt(0) == '-')
         {
-            product = new StringBuffer(product).insert(0,'-').toString();
+            product = new StringBuilder(new StringBuffer(product.toString()).insert(0, '-').toString());
         }
         else if(tempnum1.charAt(0) == '-' && tempnum2.charAt(0) == '-')
         {
-            product = product;
+            product = new StringBuilder(product.toString());
         }
-        return product;
+        return product.toString();
     }
 }

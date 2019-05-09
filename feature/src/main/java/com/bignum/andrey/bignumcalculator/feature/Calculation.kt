@@ -2,14 +2,12 @@ package com.bignum.andrey.bignumcalculator.feature
 
 import java.util.*
 import kotlin.math.absoluteValue
-import kotlin.math.max
-import kotlin.math.round
 
 class Calculation(text:String) {
-    var calculationText = text
+    private var calculationText = text
 
     private fun representAsList(num: String):LinkedList<Int> {
-        var resStr = LinkedList<String>()
+        val resStr = LinkedList<String>()
         var i = 0
         while(i < num.length){
             if (i + 6 <= num.length){
@@ -20,7 +18,7 @@ class Calculation(text:String) {
             i+=6
         }
         i = resStr.count()-1
-        var rem = ""
+        var rem: String
         while (i > 0) {
             if (resStr[i].length < 6) {
                 rem = resStr[i-1].substring(resStr[i].length, 6)
@@ -29,7 +27,7 @@ class Calculation(text:String) {
             }
             i--
         }
-        var res = LinkedList<Int>()
+        val res = LinkedList<Int>()
         resStr.forEach {
             res.add(it.toInt())
         }
@@ -41,7 +39,7 @@ class Calculation(text:String) {
         var x = representAsList(num1)
         var y = representAsList(num2)
         if (x.count() < y.count()) {
-            var c = x
+            val c = x
             x = y
             y = c
         }
@@ -94,7 +92,7 @@ class Calculation(text:String) {
         var x = representAsList(num1)
         var y = representAsList(num2)
         if (x.count() < y.count()) {
-            var c = x
+            val c = x
             x = y
             y = c
         }
@@ -170,12 +168,12 @@ class Calculation(text:String) {
     }
 
     fun multiplication():String {
-        var nums = calculationText.split(" ")
+        val nums = calculationText.split(" ")
         if (nums.count() != 2 || nums[1].isBlank() || nums[1].isEmpty()) {
             return ""
         }
-        var num1 = nums[0]
-        var num2 = nums[1]
+        val num1 = nums[0]
+        val num2 = nums[1]
         return mult(num1, num2)
     }
 
@@ -183,7 +181,7 @@ class Calculation(text:String) {
         if(calculationText.isBlank() || calculationText.isEmpty()) {
             return ""
         }
-        var base = calculationText.toInt()
+        val base = calculationText.toInt()
         if (calculationText.isEmpty()|| calculationText.isBlank()) {
             return ""
         }
