@@ -1,28 +1,27 @@
 package com.bignum.andrey.bignumcalculator.feature
 
-import java.util.*
+class Model {
 
-class Model() {
+    companion object{
+        fun calculate(expression: String, action:Actions):String {
 
-    fun Calculate(expression: String, action:Actions):String {
+            var result = ""
 
-        var result = ""
-
-        val calculation = Calculation(expression)
-        if (action == Actions.Addition) {
-            result = calculation.Addition()
+            val calculation = Calculation(expression)
+            if (action == Actions.Addition) {
+                result = calculation.addition()
+            }
+            if (action == Actions.Subtraction) {
+                result = calculation.subtract()
+            }
+            if (action == Actions.Multiplication) {
+                result = calculation.multiplication()
+            }
+            if (action == Actions.Factorial) {
+                result = calculation.fact()
+            }
+            return result
         }
-        if (action == Actions.Subtraction) {
-            result = calculation.Subtract()
-        }
-        if (action == Actions.Multiplication) {
-            result = calculation.Multiplication()
-        }
-        if (action == Actions.Factorial) {
-            result = calculation.Fact()
-        }
-        return result
-    }
 
     /*
     private var history : LinkedList<Calculation> = LinkedList()
@@ -33,4 +32,5 @@ class Model() {
 
     fun getHistory() = history
     */
+    }
 }

@@ -1,10 +1,11 @@
 package com.bignum.andrey.bignumcalculator.feature
 
 import android.arch.lifecycle.ViewModel
-import java.util.*
 
-class ExtendedViewModel(private var calculatorModel: Model) :ViewModel() {
+class ExtendedViewModel :ViewModel() {
 
-    fun MakeCalculation(expression:String, action: Actions) = calculatorModel.Calculate(expression, action)
+    companion object{
+        fun makeCalculation(expression:String, action: Actions) = Model.calculate(expression, action)
+    }
 
 }

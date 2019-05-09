@@ -1,14 +1,12 @@
 package com.bignum.andrey.bignumcalculator.feature
 
-import android.view.View
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.TextView
 import java.util.*
 import kotlin.math.absoluteValue
+import kotlin.math.max
+import kotlin.math.round
 
 class Calculation(text:String) {
-    var calculation_text = text
+    var calculationText = text
 
     private fun representAsList(num: String):LinkedList<Int> {
         var resStr = LinkedList<String>()
@@ -131,45 +129,48 @@ class Calculation(text:String) {
         return result
     }
 
-    fun Addition():String {
-        var nums = calculation_text.split(" ")
+    fun addition():String {
+        val nums = calculationText.split(" ")
         if (nums.count() != 2) {
             return ""
         }
-        var num1 = nums[0]
-        var num2 = nums[1]
+        val num1 = nums[0]
+        val num2 = nums[1]
         return add(num1, num2)
     }
 
-    fun Subtract():String {
-        var nums = calculation_text.split(" ")
+    fun subtract():String {
+        val nums = calculationText.split(" ")
         if (nums.count() != 2) {
             return ""
         }
-        var num1 = nums[0]
-        var num2 = nums[1]
+        val num1 = nums[0]
+        val num2 = nums[1]
         return subt(num1, num2)
     }
 
-    fun mult(n1:String, n2:String):String {
+    private fun mult(n1:String, n2:String):String {
         var num1 = n1
         var num2 = n2
         if (n1.length < n2.length) {
-            var c = num1
+            val c = num1
             num1 = num2
             num2 = c
         }
-        var base = num1
-        num2 = subt(num2, "1")
-        while (num2 != "0") {
-            num1 = add(num1, base)
+        if (num1.length == 1 || num2.length == 1) {
+            val base = num1
             num2 = subt(num2, "1")
+            while (num2 != "0") {
+                num1 = add(num1, base)
+                num2 = subt(num2, "1")
+            }
+            return num1
         }
-        return num1
+        return Multiplication.multiplicate(num1, num2)
     }
 
-    fun Multiplication():String {
-        var nums = calculation_text.split(" ")
+    fun multiplication():String {
+        var nums = calculationText.split(" ")
         if (nums.count() != 2 || nums[1].isBlank() || nums[1].isEmpty()) {
             return ""
         }
@@ -178,12 +179,12 @@ class Calculation(text:String) {
         return mult(num1, num2)
     }
 
-    fun Fact():String {
-        if(calculation_text.isBlank() || calculation_text.isEmpty()) {
+    fun fact():String {
+        if(calculationText.isBlank() || calculationText.isEmpty()) {
             return ""
         }
-        var base = calculation_text.toInt()
-        if (calculation_text.isEmpty()|| calculation_text.isBlank()) {
+        var base = calculationText.toInt()
+        if (calculationText.isEmpty()|| calculationText.isBlank()) {
             return ""
         }
         var result = "1"

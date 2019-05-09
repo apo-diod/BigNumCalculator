@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.TextView
 import java.util.*
 
-class View(private var VM:ExtendedViewModel, private var calculationDisplay:TextView) {
+class View(private var calculationDisplay:TextView) {
     private var displays: LinkedList<TextView> = LinkedList()
     private var buttons: LinkedList<AppCompatButton> = LinkedList()
 
@@ -13,11 +13,11 @@ class View(private var VM:ExtendedViewModel, private var calculationDisplay:Text
         calculationDisplay = displ
     }
 
-    fun AddDisplay(displ: TextView) {
+    fun addDisplay(displ: TextView) {
         displays.add(displ)
     }
 
-    fun DisplayText(txt: String) {
+    fun displayText(txt: String) {
         calculationDisplay.text = txt
         displays.forEach {
             it.text = txt
@@ -40,7 +40,7 @@ class View(private var VM:ExtendedViewModel, private var calculationDisplay:Text
         buttons.add(btn)
     }
 
-    fun calculate(action: Actions) =  DisplayText(VM.MakeCalculation(calculationDisplay.text.toString(), action))
+    fun calculate(action: Actions) =  displayText(ExtendedViewModel.makeCalculation(calculationDisplay.text.toString(), action))
 
     fun getText() = calculationDisplay.text.toString()
 

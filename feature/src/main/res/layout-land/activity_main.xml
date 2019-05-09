@@ -18,13 +18,13 @@
                                                        android:layout_height="60dp"
                                                        android:text="@string/eight"
                                                        android:id="@+id/eight_button"
-                                                       android:layout_marginLeft="70dp"
+                                                       android:layout_marginStart="70dp"
             />
             <android.support.v7.widget.AppCompatButton android:layout_width="60dp"
                                                        android:layout_height="60dp"
                                                        android:text="@string/nine"
                                                        android:id="@+id/nine_button"
-                                                       android:layout_marginLeft="140dp"
+                                                       android:layout_marginStart="140dp"
             />
             <android.support.v7.widget.AppCompatButton android:layout_width="60dp"
                                                        android:layout_height="60dp"
@@ -116,7 +116,7 @@
         <TextView android:layout_width="300dp"
                   android:layout_height="match_parent"
                   android:id="@+id/result_text"
-                  android:layout_marginLeft="290dp"
+                  android:layout_marginStart="290dp"
         />
     </RelativeLayout>
 </LinearLayout>
