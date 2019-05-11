@@ -10,6 +10,7 @@
     <TextView android:layout_width="match_parent"
                   android:layout_height="180dp"
                   android:id="@+id/result_text"
+                  android:scrollbars="vertical"
     />
     <RelativeLayout android:layout_width="match_parent" android:layout_height="330dp" android:id="@+id/buttonLayout">
             <android.support.v7.widget.AppCompatButton android:layout_width="80dp"

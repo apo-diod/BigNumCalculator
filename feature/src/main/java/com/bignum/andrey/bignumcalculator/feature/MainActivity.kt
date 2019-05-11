@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.widget.AppCompatButton
+import android.text.method.ScrollingMovementMethod
 
 @SuppressLint("Registered")
 class MainActivity : AppCompatActivity() {
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //requestedOrientation = SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_main)
-
+        result_text.movementMethod = ScrollingMovementMethod()
         view = View(result_text)
         for (i in 0 until buttonLayout.childCount){
             if ((i+1)%4 != 0 && i < 12) {

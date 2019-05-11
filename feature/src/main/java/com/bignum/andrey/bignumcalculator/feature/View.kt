@@ -3,6 +3,7 @@ package com.bignum.andrey.bignumcalculator.feature
 import android.support.v7.widget.AppCompatButton
 import android.view.View
 import android.widget.TextView
+import org.jetbrains.anko.doAsync
 import java.util.*
 
 class View(private var calculationDisplay:TextView) {
@@ -40,8 +41,10 @@ class View(private var calculationDisplay:TextView) {
         buttons.add(btn)
     }
 
-    fun calculate(action: Actions) =  displayText(ExtendedViewModel.makeCalculation(calculationDisplay.text.toString(), action))
-
+    fun calculate(action: Actions) {
+        doAsync {
+            displayText(ExtendedViewModel.makeCalculation(calculationDisplay.text.toString(), action))}
+    }
     fun getText() = calculationDisplay.text.toString()
 
 }

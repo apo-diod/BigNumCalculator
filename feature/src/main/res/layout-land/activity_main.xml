@@ -117,6 +117,7 @@
                   android:layout_height="match_parent"
                   android:id="@+id/result_text"
                   android:layout_marginStart="290dp"
+                  android:scrollbars="vertical"
         />
     </RelativeLayout>
 </LinearLayout>
