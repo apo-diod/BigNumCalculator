@@ -4,25 +4,14 @@ import android.support.v7.widget.AppCompatButton
 import android.view.View
 import android.widget.TextView
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.onComplete
 import java.util.*
 
 class View(private var calculationDisplay:TextView) {
-    private var displays: LinkedList<TextView> = LinkedList()
     private var buttons: LinkedList<AppCompatButton> = LinkedList()
 
     fun setCalculationDisplay(displ:TextView) {
         calculationDisplay = displ
-    }
-
-    fun addDisplay(displ: TextView) {
-        displays.add(displ)
-    }
-
-    fun displayText(txt: String) {
-        calculationDisplay.text = txt
-        displays.forEach {
-            it.text = txt
-        }
     }
 
     fun addButton(btn:AppCompatButton, onClickListener: View.OnClickListener) {
@@ -41,10 +30,14 @@ class View(private var calculationDisplay:TextView) {
         buttons.add(btn)
     }
 
-    fun calculate(action: Actions) {
-        doAsync {
-            displayText(ExtendedViewModel.makeCalculation(calculationDisplay.text.toString(), action))}
+    fun displayText(txt:String){
+        calculationDisplay.text =txt
     }
+
+    fun calculate(action: Actions) {
+        calculationDisplay.text = ExtendedViewModel.makeCalculation(calculationDisplay.text.toString(), action).toString()
+    }
+
     fun getText() = calculationDisplay.text.toString()
 
 }
