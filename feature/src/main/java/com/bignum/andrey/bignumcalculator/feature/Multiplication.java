@@ -22,10 +22,8 @@ public class Multiplication {
 
         int[] m = new int[s1.length()+s2.length()];
 
-        // Go from right to left in num1
         for (int i = 0; i < s1.length(); i++)
         {
-            // Go from right to left in num2
             for (int j = 0; j < s2.length(); j++)
             {
                 m[i+j] = m[i+j]+(s1.charAt(i)-'0')*(s2.charAt(j)-'0');
@@ -35,9 +33,6 @@ public class Multiplication {
 
 
         StringBuilder product = new StringBuilder();
-        // Multiply with current digit of first number
-        // and add result to previously stored product
-        // at current position.
         for (int i = 0; i < m.length; i++)
         {
             int digit = m[i]%10;
@@ -50,13 +45,11 @@ public class Multiplication {
 
         }
 
-        // ignore '0's from the right
         while(product.length()>1 && product.charAt(0) == '0')
         {
             product = new StringBuilder(product.substring(1));
         }
 
-        // Check condition if one string is negative
         if(tempnum1.charAt(0) == '-' && tempnum2.charAt(0)!='-')
         {
             product = new StringBuilder(new StringBuffer(product.toString()).insert(0, '-').toString());
