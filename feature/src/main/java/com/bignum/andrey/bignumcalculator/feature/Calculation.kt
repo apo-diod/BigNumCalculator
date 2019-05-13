@@ -1,5 +1,6 @@
 package com.bignum.andrey.bignumcalculator.feature
 
+import org.jetbrains.anko.collections.forEachByIndex
 import java.util.*
 import kotlin.math.absoluteValue
 
@@ -192,4 +193,21 @@ class Calculation(text:String) {
         return result
     }
 
+    fun compare_numbers(num1 : String, num2: String) : String {
+        var x = representAsList(num1)
+        var y = representAsList(num2)
+        if (x.count() > y.count()){
+            return ">"
+        } else if (x.count() < y.count()){
+            return "<"
+        }
+        for (i in 0 until x.count()){
+            if (x[i] > y[i]){
+                return ">"
+            } else if (y[i] > x[i]) {
+                return "<"
+            }
+        }
+        return "="
+    }
 }
